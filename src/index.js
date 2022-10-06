@@ -1,23 +1,23 @@
 import ReactDOM from 'react-dom/client';
+import { Cv } from './cv/Cv';
 
+const variable = "test"
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-
-const today = new Date();
-console.log(today)
-const year = today.getFullYear();
-
-const parse_date = (nb) => {
-  return 'test'+nb
+const btn_blue = (valeur) => {
+  return <button style={{ background: 'blue', color: '#fff' }}>
+    {valeur}
+  </button>
 }
-const root = ReactDOM.createRoot(document.getElementById('epi'));
-const nb = 2
 root.render(
-<div>
-  bonjour React {year}
-  <p className='test' htmlFor="" style={{color : 'red'}}>
-    {parse_date(nb)}
-  </p>
-</div>
+  <>
+
+    text {variable}
+    {btn_blue('test')}
+    {btn_blue('boutton 2 ')}
+    <Cv></Cv>
+
+  </>
 );
 
 
