@@ -1,17 +1,23 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+const today = new Date();
+console.log(today)
+const year = today.getFullYear();
+
+const parse_date = (nb) => {
+  return 'test'+nb
+}
+const root = ReactDOM.createRoot(document.getElementById('epi'));
+const nb = 2
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+<div>
+  bonjour React {year}
+  <p className='test' htmlFor="" style={{color : 'red'}}>
+    {parse_date(nb)}
+  </p>
+</div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
