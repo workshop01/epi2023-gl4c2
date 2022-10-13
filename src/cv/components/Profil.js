@@ -6,6 +6,7 @@ export const Profil = ({description , user}) => {
     const user = props.user */
 
     /* const {description , user} = props */
+
   return (
     <section>
     <div className="photo">
