@@ -22,6 +22,26 @@ export const Cv = () => {
         {
             titre : 'Créateur',
             date_debut : 'Juin 2014',
+            date_fin : 'Sep 2015',
+            description:'test tes description testtest tes description testtest tes description test',
+            societe : {
+                nom : 'Proxym',
+                logo : 'https://www.pierre-giraud.com/wp-content/uploads/2019/07/pierre.png'
+            }
+        },{
+            titre : 'Developpeur Web',
+            date_debut : 'Juin 2014',
+            date_fin : 'Sep 2015',
+            description:'test tes description testtest tes description testtest tes description test'
+        },{
+            titre : 'Stage',
+            date_debut : 'Juin 2014',
+            date_fin : 'Sep 2015',
+            description:'test tes description testtest tes description testtest tes description test',
+            societe : {
+                nom : 'Proxym',
+                logo : 'https://www.pierre-giraud.com/wp-content/uploads/2019/07/pierre.png'
+            }
         }
     ]
     return (
@@ -31,7 +51,7 @@ export const Cv = () => {
 
             <Profil user={user} description={description} />
 
-            <Experience></Experience>
+            <Experience ex={experiences}></Experience>
 
             <Formation></Formation>
 

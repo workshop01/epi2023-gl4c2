@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { Cv } from './cv/Cv';
+import { Evenements } from './Evenements';
 
 const variable = "test"
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,10 +13,11 @@ const btn_blue = (valeur) => {
 root.render(
   <>
 
-    text {variable}
+    {/* text {variable}
     {btn_blue('test')}
-    {btn_blue('boutton 2 ')}
-    <Cv></Cv>
+    {btn_blue('boutton 2 ')} */}
+   {/*  <Cv></Cv> */}
+   <Evenements></Evenements>
 
   </>
 );
