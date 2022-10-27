@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import { Cv } from './cv/Cv';
 import { Evenements } from './Evenements';
+import { Signin } from './pages/Signin';
+import { Signup } from './pages/Signup';
 
 const variable = "test"
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,9 +18,10 @@ root.render(
     {/* text {variable}
     {btn_blue('test')}
     {btn_blue('boutton 2 ')} */}
-   {/*  <Cv></Cv> */}
-   <Evenements></Evenements>
-
+    {/*  <Cv></Cv> */}
+    {/*  <Evenements></Evenements> */}
+{/*     <Signin /> */}
+<Signup/>
   </>
 );
 
