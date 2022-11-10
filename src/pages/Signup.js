@@ -17,21 +17,34 @@ export const Signup = () => {
         e.preventDefault()
         console.log(signupForm)
     }
+    const [focus, setFocus] = useState({
+        firstname: false,
+        lastname: false,
+        email: false,
+        password: false,
+        confirmPassword: false
+    })
     return (
         <div className='col-md-4 offset-md-4 p-2 card'>
             <form onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
                 <label >First Name</label>
                 <div>
-                    <input className='form-control'
+
+
+                    <input className='form-control' focused={focus.firstname.toString()}
+                        onBlur={() => setFocus({ ...focus, firstname: true })}
                         onChange={(e) => handleAttChange(e, 'firstname')}
-                        placeholder='first name' type="text" required />
+                        placeholder='first name' type="text" pattern='^[A-Za-z]+' required />
                     <span>Firstname required</span><br></br>
                 </div>
                 <div>
                     <label >Last Name</label>
                     <input className='form-control' placeholder='Last name' type="text"
-                            onChange={(e) => handleAttChange(e, 'lastname')} pattern='https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)' />
+                        focused={focus.lastname.toString()} required
+                        onBlur={() => setFocus({ ...focus, lastname: true })}
+                        onChange={(e) => handleAttChange(e, 'lastname')}
+                        pattern='https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)' />
                     <span>Message erreur</span><br></br>
                 </div>
                 <label >Email</label>
@@ -43,8 +56,8 @@ export const Signup = () => {
                     onChange={(e) => handleAttChange(e, 'password')} />
                 <label>Confirm Password</label>
                 <input className='form-control' placeholder='Password' type="password"
-                    onChange={(e) => handleAttChange(e, 'confirmPassword')} />
-
+                    onChange={(e) => handleAttChange(e, 'confirmPassword')} pattern={signupForm.password} />
+                <span>Message erreur</span><br></br>
                 <br></br>
 
 

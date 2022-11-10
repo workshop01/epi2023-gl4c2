@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { Cv } from './cv/Cv';
 import { Evenements } from './Evenements';
+import { FeedbackApp } from './feedbackApp/FeedbackApp';
 import { Signin } from './pages/Signin';
 import { Signup } from './pages/Signup';
 
@@ -21,7 +22,8 @@ root.render(
     {/*  <Cv></Cv> */}
     {/*  <Evenements></Evenements> */}
 {/*     <Signin /> */}
-<Signup/>
+{/* <Signup/> */}
+<FeedbackApp/>
   </>
 );
 
