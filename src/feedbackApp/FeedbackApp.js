@@ -1,99 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FeedbackForm } from './components/FeedbackForm'
+import { FeedbackList } from './components/FeedbackList'
+import { Header } from './components/Header'
+import { Stats } from './components/Stats'
 import './feedback.css'
 export const FeedbackApp = () => {
-  return (
-    <div>
+    const [list, setList] = useState([])
+    const send = (e , feed) => {
+        e.preventDefault() // annuler l'action par défaut du bouton ( refresh)
+        if(feed.id){
+            setList(list.map((element)=> element.id == feed.id ? feed : element))
+        }else{
+            const nextid = list.length >0 ?list[0].id + 1 : 1
+            setList([{...feed , id : nextid}, ...list])
+        }
         
-{/* header */}
-<div className='header'>
-    <h2 style={{backgroundColor: '#fff'}}>Feedback App </h2>
-</div>
-{/*  / header */}
+        console.log(feed)
+    }
+    const remove = (id)=>{
+        setList(list.filter(item=> item.id != id))
+    }
+
+    const [editedItem , setItem] = useState({})
+    const edit = (feedback)=>{
+        setItem(feedback)
+    }
+
+    return (
+        <div>
+
+            {/* header */}
+            <Header></Header>
+            {/*  / header */}
 
 
-<div className="container">
-    {/* feedback form */}
-    <div className='card'>
-        <h2>Leave your feedback</h2>
-
-        <form>
-            <ul className='rating'>
-
-
-                <li>
-                    <input type="radio" name="rating" value="1" />
-                    <label htmlFor="1">1</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="2" />
-                    <label htmlFor="2">2</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="3" />
-                    <label htmlFor="3">3</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="4" />
-                    <label htmlFor="4">4</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="5" />
-                    <label htmlFor="5">5</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="6" />
-                    <label htmlFor="6">6</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="7" />
-                    <label htmlFor="7">7</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="8" />
-                    <label htmlFor="8">8</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="9" />
-                    <label htmlFor="9">9</label>
-                </li>
-                <li>
-                    <input type="radio" name="rating" value="10" />
-                    <label htmlFor="10">10</label>
-                </li>
-
-
-            </ul>
-            <div className='input-group'>
-                <input></input>
-                <button className="btn btn-secondary">send</button>
+            <div className="container">
+                {/* feedback form */}
+                <FeedbackForm send={send} editedItem={editedItem} />
+                {/* / feedback form */}
+                {/* feedback stats */}
+               <Stats list={list}/>
+                {/* /feedback stats */}
+                {/* feedbacks */}
+                <FeedbackList list={list} remove={remove} edit={edit}/>
+                {/* /feedbacks */}
             </div>
-        </form>
-    </div>
-    {/* / feedback form */}
-    {/* feedback stats */}
-    <div className='feedback-stats'>
-        <h4>Feedbacks : 5</h4>
-        <h4>average : 5.75</h4>
-    </div>
-    {/* /feedback stats */}
-    {/* feedbacks */}
-    <div>
-        {/* feedback card */}
-        <div className='card'>
-
-            <button className='close'>
-                x
-            </button>
-            <button className='edit'>
-                E
-            </button>
-            <h3 className='num-display'>5</h3>
-            <p> Test Feedback </p>
         </div>
-        {/* /feedback card */}
-    </div>
-    {/* /feedbacks */}
-</div>
-    </div>
-  )
-}
+    )
+} 
