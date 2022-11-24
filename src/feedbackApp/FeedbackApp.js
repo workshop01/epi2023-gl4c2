@@ -6,6 +6,7 @@ import { Stats } from './components/Stats'
 import './feedback.css'
 export const FeedbackApp = () => {
     const [list, setList] = useState([])
+    const [listCopy, setListCopy] = useState([])
     const send = (e , feed) => {
         e.preventDefault() // annuler l'action par défaut du bouton ( refresh)
         if(feed.id){
@@ -13,6 +14,8 @@ export const FeedbackApp = () => {
         }else{
             const nextid = list.length >0 ?list[0].id + 1 : 1
             setList([{...feed , id : nextid}, ...list])
+            setListCopy([{...feed , id : nextid}, ...list])
+
         }
         
         console.log(feed)
@@ -24,6 +27,14 @@ export const FeedbackApp = () => {
     const [editedItem , setItem] = useState({})
     const edit = (feedback)=>{
         setItem(feedback)
+    }
+
+    const sort = ()=>{
+        setList([...list.sort((a , b)=> a.rating-b.rating)])
+    }
+
+    const search = (value)=>{
+        setList(listCopy.filter((element)=> element.text.toLowerCase().includes(value.toLowerCase())))
     }
 
     return (
@@ -42,7 +53,8 @@ export const FeedbackApp = () => {
                <Stats list={list}/>
                 {/* /feedback stats */}
                 {/* feedbacks */}
-                <FeedbackList list={list} remove={remove} edit={edit}/>
+                <FeedbackList list={list} remove={remove} edit={edit} sort={sort} 
+                search={search}/>
                 {/* /feedbacks */}
             </div>
         </div>

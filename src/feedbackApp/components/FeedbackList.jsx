@@ -1,8 +1,12 @@
 import React from 'react'
 
-export const FeedbackList = ({ list , remove ,edit}) => {
+export const FeedbackList = ({ list , remove ,edit , sort , search}) => {
     return (
         <div>
+            <div>
+                <a onClick={sort}>Sort</a>
+                <input onChange={(event)=>search(event.target.value)} ></input>
+            </div>
             {/* feedback card */}
             {list.map((feedback, index) => {
                 return (

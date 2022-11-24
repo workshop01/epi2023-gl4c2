@@ -9,6 +9,6 @@ export const Stats = ({ list }) => {
 
                 {list.length > 0 ? (somme / list.length).toFixed(2) : 0}
             </h4>
-        </div>
+        </div>                                                                                                  
     )
 }

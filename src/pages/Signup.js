@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import '../style.css';
 export const Signup = () => {
 
+    const navigate = useNavigate();
     const [signupForm, setSignupForm] = useState({
         firstname: '',
         lastname: '',
@@ -16,6 +18,8 @@ export const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(signupForm)
+        navigate('/feedback')
+
     }
     const [focus, setFocus] = useState({
         firstname: false,
