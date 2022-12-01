@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router , Route , Routes,Link } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import { Cv } from './cv/Cv';
 import { Evenements } from './Evenements';
 import { FeedbackApp } from './feedbackApp/FeedbackApp';
@@ -16,13 +17,17 @@ export const App = () => {
  
 
            <Navbar></Navbar>
+           <AuthProvider>
             <Routes>
                 <Route exact path='/test' element={<>Bonjour</>}></Route>
                 <Route exact path='/feedback' element={<FeedbackApp/>}></Route>
                 <Route exact path='/register' element={<Signup/>}></Route>
+                <Route exact path='/login' element={<Signin/>}></Route>
+
                 <Route exact path='/details/:title/:id/:type' element={<Details/>}></Route>
 
             </Routes>
+            </AuthProvider>
         </Router>
 
             {/* text {variable}

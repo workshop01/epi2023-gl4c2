@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { FeedbackContext } from '../../context/FeedbackContext'
 
-export const FeedbackForm = ({ send, editedItem }) => {
+export const FeedbackForm = () => {
+    const { send, editedItem }=useContext(FeedbackContext)
     const [feed, setFeed] = useState({
        id : undefined, text: '', rating: 1
     })

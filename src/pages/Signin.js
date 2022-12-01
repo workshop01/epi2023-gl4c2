@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../context/AuthContext'
 
 export const Signin = () => {
 
     const [email , setEmail] = useState('')
     const [password , setPassword] = useState('')
 
-    const handleSubmit = ()=>{
-        const body = {email , password}
-        console.log(body)
-        
-    }
+    const {handleSignin} = useContext(AuthContext)
+   
     return (
         
         <div className='col-md-4 offset-md-4'>
@@ -22,7 +20,7 @@ export const Signin = () => {
 
             <br></br>
 
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={()=>handleSignin(email , password)}>Submit</button>
 
         </div>
     )

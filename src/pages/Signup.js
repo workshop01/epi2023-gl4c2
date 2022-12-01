@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 import '../style.css';
 export const Signup = () => {
 
     const navigate = useNavigate();
+   
     const [signupForm, setSignupForm] = useState({
         firstname: '',
         lastname: '',
@@ -15,12 +17,7 @@ export const Signup = () => {
     const handleAttChange = (e, att) => {
         setSignupForm({ ...signupForm, [att]: e.target.value })
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(signupForm)
-        navigate('/feedback')
-
-    }
+   
     const [focus, setFocus] = useState({
         firstname: false,
         lastname: false,
@@ -28,9 +25,10 @@ export const Signup = () => {
         password: false,
         confirmPassword: false
     })
+    const {handleSubmit}= useContext(AuthContext)
     return (
         <div className='col-md-4 offset-md-4 p-2 card'>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e)=>handleSubmit(e , signupForm)}>
                 <h2>Sign Up</h2>
                 <label >First Name</label>
                 <div>
