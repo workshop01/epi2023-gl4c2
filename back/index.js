@@ -1,17 +1,21 @@
 //importation
 const express = require('express')
-
+const mongoose = require('mongoose');
+const FeedbackModel = require('./models/Feedback.model');
 
 //initialisation
 const server = express()
-
-//traitement
-server.get('/liste_feedback' , (req , res)=>{
-    console.log("test liste feesback")
-   // res.end();
-   res.status(300).send({'test' : 'ok'})
+server.use(express.json())
+//connexion à la base de données
+mongoose.set('strictQuery', false);
+mongoose.connect('mongodb://localhost:27017/feedback_database'  ,()=>{
+    console.log('Mongodb connected')
 })
 
+
+
+
+require('./apis')(server)
 
 //lancement du serveur 
 server.listen(5001,()=>{
