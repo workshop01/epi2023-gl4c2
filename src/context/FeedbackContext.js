@@ -1,10 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
 
 export const FeedbackContext = createContext()
 export const FeedbackProvider = ({children}) => {
     const [list, setList] = useState([])
     const [listCopy, setListCopy] = useState([])
+
+
+    useEffect(()=>{
+        getList()
+    })
+
+    const getList=(async()=>{
+        const rep = await fetch('http://localhost:5001/feedbacks')
+        console.log(rep)
+    })
     const send = (e, feed) => {
         e.preventDefault() // annuler l'action par défaut du bouton ( refresh)
         if (feed.id) {
